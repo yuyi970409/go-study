@@ -1,0 +1,6 @@
+{
+  "server": {
+    "address": ":9942",
+    "debug": true
+  }
+}
