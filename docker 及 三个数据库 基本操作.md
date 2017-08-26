@@ -15,12 +15,18 @@ docker images           // 列出镜像
 docker rmi              // 删除镜像
 ```
 
-docker 运行 mysql／mongo
+docker 运行 mysql/mongo/cockroach/mssql
 
 ```docker
 docker run -d -p 127.0.0.1:3306:3306 –-name shopapi -e MYSQL_ROOT_PASSWORD=123456 mysql
 
 docker run -d -p 3307:27017 --name shopmgo  mongo
+
+// 运行一个节点
+docker run -d --name=roach1 --hostname=roach1 --net=roachnet -p 26257:26257 -p 8080:8080  -v "${PWD}/cockroach-data/roach1:/cockroach/cockroach-data"  cockroachdb/cockroach start --insecure
+
+docker run -d --name name_your_container -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=P@55w0rd' -p 1433:1433 microsoft/mssql-server-linux
+
 
 // -d 后台运行
 // -p 本地 3306 端口对应 docker 3306
